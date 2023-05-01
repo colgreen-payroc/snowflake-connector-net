@@ -345,6 +345,11 @@ namespace Snowflake.Data.Core
                         else
                         {
                             //TODO: Should probably check to see if the error is recoverable or transient.
+                            if(disableRetry)
+                            {
+                                throw;
+                            }
+
                             logger.Warn("Error occurred during request, retrying...", e);
                         }
                     }
